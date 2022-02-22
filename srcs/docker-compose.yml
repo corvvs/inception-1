@@ -1,19 +1,19 @@
 version: "3"
 
 services:
-#    nginx:
+    nginx:
 #        depends_on:
 #            - wordpress
-#        build: requirements/nginx
-#        container_name: nginx
-#        volumes:
-#            - wordpress_data:/var/www/html
-#        networks:
-#            - public
-#        ports:
-#            - "80:80"
-#            - "443:443"
-#        restart: always
+        build: requirements/nginx
+        container_name: nginx
+        volumes:
+            - wordpress_data:/var/www/html
+        networks:
+            - public
+        ports:
+            - "80:80"
+            - "443:443"
+        restart: always
 #    wordpress:
 #        depends_on:
 #            - db
@@ -65,13 +65,13 @@ volumes:
             type: none
             o: bind
             device: ${HOME}/inception_data/db
-#    wordpress_data:
-#        driver: local
-#        driver_opts:
-#            type: none
-#            o: bind
-#            device: ${HOME}/inception_data/db
+    wordpress_data:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: ${HOME}/inception_data/db
 
 networks:
-#    public:
+    public:
     private:
