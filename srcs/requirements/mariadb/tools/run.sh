@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 15:49:47 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/22 15:50:48 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/23 00:38:21 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,14 +40,18 @@ else
 	cat << EOF > $tfile
 USE mysql ;
 FLUSH PRIVILEGES ;
+
+DROP DATABASE IF EXISTS test ;
+
 GRANT ALL ON *.* TO 'root'@'%' identified by '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION ;
 GRANT ALL ON *.* TO 'root'@'localhost' identified by '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION ;
 SET PASSWORD FOR 'root'@'localhost'=PASSWORD('${MYSQL_ROOT_PASSWORD}') ;
-DROP DATABASE IF EXISTS test ;
 FLUSH PRIVILEGES ;
 
 CREATE DATABASE IF NOT EXISTS '$WP_DB_NAME' CHARACTER SET utf8 COLLATE utf8_general_ci ;
-GRANT ALL ON '$WP_DB_NAME'.* TO '$WP_DB_USER'@'%' IDENTIFIED BY '$WP_DB_PASSWORD' ;
+CREATE USER '$WP_DB_USER'@'%' IDENTIFIED BY '$WP_DB_PASSWORD';
+GRANT ALL PRIVILEGES ON '$WP_DB_NAME'.* TO '$WP_DB_USER'@'%';
+FLUSH PRIVILEGES ;
 EOF
 
 	/usr/bin/mysqld --user=mysql --bootstrap < $tfile
@@ -56,7 +60,7 @@ EOF
 fi
 
 # allow remote connections
-sed -i "s|skip-networking|# skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf
+sed -i "s|.*skip-networking.*|# skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf
 sed -i "s|.*bind-address\s*=.*|bind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf
 
 exec /usr/bin/mysqld --user=mysql --console

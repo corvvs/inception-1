@@ -6,16 +6,19 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 18:47:50 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/22 15:45:32 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/22 23:58:23 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-VOLUMES_PATH = ${HOME}/inception_data
+#HOME=/home/rabi
+HOME=/home/rabi
+
+VOLUMES_PATH = $(HOME)/inception_data
 VOLUMES_DIR = db wordpress
 
 VOLUMES = $(addprefix $(VOLUMES_PATH)/, $(VOLUMES_DIR))
 
-all: clean load
+all: stop load
 
 load: | $(VOLUMES)
 	docker-compose -f ./srcs/docker-compose.yml --env-file ./srcs/.env up -d --build
@@ -37,6 +40,6 @@ clean: stop
 prune: clean
 	docker system prune -af
 
-re: clean all
+re: prune load
 
 .PHONY: all load debug stop clean prune re

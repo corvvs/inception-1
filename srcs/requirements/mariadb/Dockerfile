@@ -1,4 +1,4 @@
-FROM alpine:3.15
+FROM alpine:3.14
 
 RUN apk update && apk upgrade && apk add --no-cache \
 	mariadb mariadb-client mariadb-common mariadb-server-utils pwgen && \
