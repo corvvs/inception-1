@@ -6,12 +6,12 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 18:47:50 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/22 23:58:23 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/24 11:01:33 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #HOME=/home/rabi
-HOME=/home/rabi
+HOME=/Users/dpoveda-
 
 VOLUMES_PATH = $(HOME)/inception_data
 VOLUMES_DIR = db wordpress
