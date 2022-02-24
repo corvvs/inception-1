@@ -1,7 +1,7 @@
 FROM alpine:3.14
 
 RUN apk update && apk upgrade && apk add --no-cache \
-	mariadb mariadb-client mariadb-common mariadb-server-utils pwgen && \
+	mariadb mariadb-client mariadb-common && \
 	rm -rf /var/cache/apk/*
 
 COPY ./tools/run.sh /tmp/run.sh

@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 19:15:20 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/23 00:24:17 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/24 13:42:44 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,11 @@ done
 # check if website already created
 if [ ! -f "/var/www/html/index.html" ]; then
 	# static website
-	#mv /tmp/static-web/* /var/www/html/
+	mv /tmp/static-web/* /var/www/html/
+
+	echo "[INFO] installing wordpress..."
 
 	# adminer
-
-	echo "KJDSFLKSJDFLKJSKDLFJKLSDJFLKSJDF:SDKFJSKLDJFKLSDJFLKSDJFLKSDJFKLDSJ"
-	echo "KJDSFLKSJDFLKJSKDLFJKLSDJFLKSJDF:SDKFJSKLDJFKLSDJFLKSDJFLKSDJFKLDSJ"
-	echo "KJDSFLKSJDFLKJSKDLFJKLSDJFLKSJDF:SDKFJSKLDJFKLSDJFLKSDJFLKSDJFKLDSJ"
-	echo "KJDSFLKSJDFLKJSKDLFJKLSDJFLKSJDF:SDKFJSKLDJFKLSDJFLKSDJFLKSDJFKLDSJ"
-	echo "KJDSFLKSJDFLKJSKDLFJKLSDJFLKSJDF:SDKFJSKLDJFKLSDJFLKSDJFLKSDJFKLDSJ"
-	echo "KJDSFLKSJDFLKJSKDLFJKLSDJFLKSJDF:SDKFJSKLDJFKLSDJFLKSDJFLKSDJFKLDSJ"
 
 	# wp-cli
 	wp core download --allow-root
@@ -43,19 +38,10 @@ if [ ! -f "/var/www/html/index.html" ]; then
 
 	# redis
 	# TODO
+
+	echo "[INFO] finished wordpress installation"
 fi
 
-echo "PATATAAAAAAAAAAAAAAA"
-echo "PATATAAAAAAAAAAAAAAA"
-echo "PATATAAAAAAAAAAAAAAA"
-echo "PATATAAAAAAAAAAAAAAA"
-echo "PATATAAAAAAAAAAAAAAA"
-echo "PATATAAAAAAAAAAAAAAA"
-
-
-while true; do
-	sleep 1
-done
 
 #php-fpm7 -F -R
 php-fpm7 --nodaemonize
