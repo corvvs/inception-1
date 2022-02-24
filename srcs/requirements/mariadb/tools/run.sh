@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 15:49:47 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/24 13:40:17 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/24 22:03:27 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ EOF
 	ps -ef > /out_1.txt
 	/usr/bin/mysqld --user=mysql --bootstrap < $tfile
 	#/usr/bin/mysql root -p$MYSQL_ROOT_PASSWORD < $tfile
-	rm -f $tfile
+	#rm -f $tfile
 	ps -ef > /out_2.txt
 	echo "[INFO] mysql init process done. Ready for start up."
 fi

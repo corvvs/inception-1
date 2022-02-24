@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 19:15:20 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/24 13:42:44 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/24 22:40:31 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ if [ ! -f "/var/www/html/index.html" ]; then
 	wp config create --dbname=$WP_DB_NAME --dbuser=$WP_DB_USER --dbpass=$WP_DB_PASSWORD \
 		--dbhost=$MYSQL_HOST --dbcharset="utf8" --dbcollate="utf8_general_ci" --allow-root
 	wp core install --url=$DOMAIN_NAME/wordpress --title=$WP_TITLE --admin_user=$WP_ADMIN_USER \
-		--admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
+		--admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
 	wp user create $WP_USER $WP_EMAIL --role=author --user_pass=$WP_PASSWORD --allow-root
 	wp theme install ryu --activate --allow-root
 
@@ -42,6 +42,7 @@ if [ ! -f "/var/www/html/index.html" ]; then
 	echo "[INFO] finished wordpress installation"
 fi
 
+mkdir -p /var/run/php-fpm7
 
 #php-fpm7 -F -R
 php-fpm7 --nodaemonize
