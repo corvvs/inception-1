@@ -5,32 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/25 01:02:44 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/25 14:36:02 by dpoveda-         ###   ########.fr        #
+#    Created: 2022/02/25 14:52:07 by dpoveda-          #+#    #+#              #
+#    Updated: 2022/02/25 16:03:57 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
 
-if [ ! -f /etc/vsftpd/vsftpd.old ]; then
-	mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.old
-	mv /tmp/vsftpd.conf /etc/vsftpd/vsftpd.conf
-
-	adduser $FTP_USER --disabled-password
-	echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
-
-	echo $FTP_USER >> /etc/vsftpd.userlist
-
-	# wait for wordpress to finish installation
-	while [ ! -f "/var/www/html/finish" ]; do
-		sleep 1
-	done
-	rm /var/www/html/finish
-	mkdir -p /var/www/html
-	chown -R $FTP_USER:$FTP_USER /var/www/html
-	ls -l /var/www/html > /tmp/out1
-
-	echo "[INFO] started FTP server"
+if [ ! -f "/etc/redis.conf.old" ]; then
+	mv /etc/redis.conf /etc/redis.conf.old
+	mv /tmp/redis.conf /etc/redis.conf
 fi
 
-vsftpd /etc/vsftpd/vsftpd.conf
+#redis-server --protected-mode no
+redis-server /etc/redis.conf --protected-mode no
