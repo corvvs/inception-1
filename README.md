@@ -47,4 +47,5 @@ In addition to the diagram above, I also open the ports 21, 21100-21110 for the 
 Conclusion: now I like Docker and I enjoyed this a lot.
 
 ##
-[![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-science.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/it-works-why.svg)](https://forthebadge.com)
