@@ -57,6 +57,20 @@ services:
             WP_DB_NAME: ${WP_DB_NAME}
             WP_DB_USER: ${WP_DB_USER}
             WP_DB_PASSWORD: ${WP_DB_PASSWORD}
+    ftp:
+        build: requirements/ftp
+        container_name: ftp
+        volumes:
+            - wordpress_data:/var/www/html
+        ports:
+            - "21:21"
+            - "21100-21110:21100-21110"
+        networks:
+            - private
+        restart: always
+        environment:
+            FTP_USER: ${FTP_USER}
+            FTP_PASSWORD: ${FTP_PASSWORD}
 
 volumes:
     db_data:
