@@ -24,8 +24,8 @@ For this project we need to setup a simple docker-compose network with the follo
 
 With the following volumes:
 
-- 1. A volume that contains Wordpress database.
-- 2. A volume that contains Wordpress website files.
+- A volume that contains Wordpress database.
+- A volume that contains Wordpress website files.
 
 Each docker container must have his own `Dockerfile` and, of course, have to restart in case of crash
 
@@ -47,5 +47,4 @@ In addition to the diagram above, I also open the ports 21, 21100-21110 for the 
 Conclusion: now I like Docker and I enjoyed this a lot.
 
 ##
-[![forthebadge](https://forthebadge.com/images/badges/made-with-crayons.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)](https://forthebadge.com)
