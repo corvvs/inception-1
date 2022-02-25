@@ -16,10 +16,7 @@ COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 #COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 #RUN sed -i "s|.*#include /etc/nginx/conf.d/\*.conf;.*|include /etc/nginx/conf.d/\*.conf;|g" /etc/nginx/nginx.conf
 
-#RUN cat ./etc/nginx/conf.d/default.conf
-#RUN cat ./etc/nginx/nginx.conf
-
 # container restart if I just run 'nginx'
 # don't know why becouse 'daemon off' is set in the default.conf file
-CMD ["nginx"]
+#CMD ["nginx"]
 CMD ["nginx", "-g", "daemon off;"]
