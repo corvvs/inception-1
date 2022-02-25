@@ -14,6 +14,8 @@
 - run `make stop` to stop the containers.
 - run `make prune` to stop the containers and/or delete the volumes.
 
+P.S.: you can change variables such as the Domain, users and passwords on the `srcs/.env` file.
+
 ## About this project
 
 For this project we need to setup a simple docker-compose network with the following containers:
