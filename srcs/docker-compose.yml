@@ -7,7 +7,7 @@ services:
         build: requirements/nginx
         container_name: nginx
         volumes:
-            - wordpress_data:/var/www/html
+            - web_data:/var/www/html
         networks:
             - public
         ports:
@@ -20,7 +20,7 @@ services:
         build: requirements/wordpress
         container_name: wordpress
         volumes:
-            - wordpress_data:/var/www/html
+            - web_data:/var/www/html
         networks:
             - public
             - private
@@ -62,7 +62,7 @@ services:
         build: requirements/bonus/ftp
         container_name: ftp
         volumes:
-            - wordpress_data:/var/www/html
+            - web_data:/var/www/html
         ports:
             - "21:21"
             - "21100-21110:21100-21110"
@@ -84,6 +84,26 @@ services:
         environment:
             REDIS_HOST: ${REDIS_HOST}
             REDIS_PASSWORD: ${REDIS_PASSWORD}
+    adminer:
+        build: requirements/bonus/adminer
+        container_name: adminer
+        volumes:
+            - web_data:/var/www/html
+        restart: on-failure
+    static-website:
+        build: requirements/bonus/static-website
+        container_name: static-website
+        volumes:
+            - web_data:/var/www/html
+        restart: on-failure
+    phpmyadmin:
+        build: requirements/bonus/phpmyadmin
+        container_name: phpmyadmin
+        volumes:
+            - web_data:/var/www/html
+        restart: on-failure
+        environment:
+            MYSQL_HOST: ${MYSQL_HOST}
 
 volumes:
     db_data:
@@ -91,13 +111,13 @@ volumes:
         driver_opts:
             type: none
             o: bind
-            device: ${HOME}/inception_data/db
-    wordpress_data:
+            device: ${HOME}/inception_data/db_data
+    web_data:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: ${HOME}/inception_data/db
+            device: ${HOME}/inception_data/web_data
 
 networks:
     public:

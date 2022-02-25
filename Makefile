@@ -6,14 +6,14 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 18:47:50 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/24 22:57:01 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/25 22:22:45 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # YOUR HOME DIR
 #HOME=/tmp
-HOME=/home/rabi
-#HOME=/Users/dpoveda-
+HOME=/home/rabi/data
+#HOME=/Users/dpoveda-/data
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
@@ -23,7 +23,7 @@ else
 endif
 
 VOLUMES_PATH = $(HOME)/inception_data
-VOLUMES_DIR = db wordpress
+VOLUMES_DIR = db_data web_data
 
 VOLUMES = $(addprefix $(VOLUMES_PATH)/, $(VOLUMES_DIR))
 
@@ -45,7 +45,7 @@ stop:
 	docker-compose -f srcs/docker-compose.yml --env-file $(ENV_FILE) down
 
 clean: stop
-	docker volume rm srcs_db srcs_wordpress -f
+	docker volume rm $(addprefix srcs_, $(VOLUMES_DIR)) -f
 	docker volume prune -f
 	rm -rf $(VOLUMES_PATH) || rm -rf $(VOLUMES)
 

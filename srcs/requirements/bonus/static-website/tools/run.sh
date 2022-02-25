@@ -5,33 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/25 01:02:44 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/25 22:25:08 by dpoveda-         ###   ########.fr        #
+#    Created: 2022/02/25 20:49:03 by dpoveda-          #+#    #+#              #
+#    Updated: 2022/02/25 20:55:24 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
 
-if [ ! -f /etc/vsftpd/vsftpd.old ]; then
-	mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.old
-	mv /tmp/vsftpd.conf /etc/vsftpd/vsftpd.conf
-
-	adduser $FTP_USER --disabled-password
-	echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
-
-	echo $FTP_USER >> /etc/vsftpd.userlist
-
-	# wait for wordpress to finish installation
-	while [ ! -f "/var/www/html/$WP_FILE_ONINSTALL" ]; do
-		sleep 1
-	done
-
-	mkdir -p /var/www/html
-	chown -R $FTP_USER:$FTP_USER /var/www/html
-
-	echo "[INFO] started FTP server"
+# check for static website
+if [ ! -f "/var/www/html/index.html" ]; then
+	echo "[INFO] copying static website..."
+	mv /tmp/website/* /var/www/html/
 fi
-
-chown -R $FTP_USER:$FTP_USER /var/www/html
-
-vsftpd /etc/vsftpd/vsftpd.conf

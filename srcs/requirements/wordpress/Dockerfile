@@ -63,14 +63,10 @@ RUN apk update && apk upgrade && apk add --no-cache \
 #	php7-curl php7-opcache php7-ctype  \
 #	php7-intl php7-bcmath php7-dom php7-xmlreader
 
-# php
+# php fpm
 RUN adduser -S nginx && addgroup -S nginx
 COPY ./conf/php-fpm.conf /etc/php7/php-fpm.conf
 COPY ./conf/www.conf /etc/php7/php-fpm.d/www.conf
-
-# static website
-RUN mkdir /tmp/static-web
-COPY ./conf/static-web/ /tmp/static-web/
 
 # wordpress
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
