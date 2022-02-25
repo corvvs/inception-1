@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 01:02:44 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/25 13:17:47 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/25 14:36:02 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,6 @@ if [ ! -f /etc/vsftpd/vsftpd.old ]; then
 	ls -l /var/www/html > /tmp/out1
 
 	echo "[INFO] started FTP server"
-	echo $FTP_USER
-
-	ls -l /var/www/html > /tmp/out2
-	echo "11111111"
-	sleep 50
-	echo "22222222"
-	ls -l /var/www/html > /tmp/out3
 fi
 
 vsftpd /etc/vsftpd/vsftpd.conf
