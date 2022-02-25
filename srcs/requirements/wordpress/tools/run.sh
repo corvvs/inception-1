@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 19:15:20 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/24 22:40:31 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/25 13:16:44 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 # wait until database is ready
 while ! mariadb -h$MYSQL_HOST -u$WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --silent; do
-	echo "FKLSJDLKFJSDKFJL"
+	echo "[INFO] waiting for database..."
 	sleep 1;
 done
 
@@ -39,10 +39,12 @@ if [ ! -f "/var/www/html/index.html" ]; then
 	# redis
 	# TODO
 
-	echo "[INFO] finished wordpress installation"
+	echo "[INFO] wordpress installation finished"
+	touch /var/www/html/finish
 fi
 
 mkdir -p /var/run/php-fpm7
 
+echo "[INFO] starting php-fpm..."
 #php-fpm7 -F -R
 php-fpm7 --nodaemonize
