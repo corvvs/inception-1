@@ -24,8 +24,6 @@ services:
         networks:
             - public
             - private
-        ports:
-            - "9000:9000"
         environment:
             DOMAIN_NAME: ${DOMAIN_NAME}
             MYSQL_HOST: ${MYSQL_HOST}
@@ -47,8 +45,6 @@ services:
         container_name: db
         volumes:
             - db_data:/var/lib/mysql
-        ports:
-            - "3306:3306"
         networks:
             - private
         restart: always
@@ -76,8 +72,6 @@ services:
     redis:
         build: requirements/bonus/redis
         container_name: redis
-        ports:
-            - "6379:6379"
         networks:
             - private
         restart: always
