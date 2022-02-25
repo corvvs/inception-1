@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 01:02:44 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/25 15:36:01 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/25 17:06:00 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ if [ ! -f /etc/vsftpd/vsftpd.old ]; then
 	echo $FTP_USER >> /etc/vsftpd.userlist
 
 	# wait for wordpress to finish installation
-	while [ ! -f "/var/www/html/finish" ]; do
+	while [ ! -f "/var/www/html/$WP_FILE_ONINSTALL" ]; do
 		sleep 1
 	done
-	rm /var/www/html/finish
+	rm "/var/www/html/$WP_FILE_ONINSTALL"
 
 	mkdir -p /var/www/html
 	chown -R $FTP_USER:$FTP_USER /var/www/html

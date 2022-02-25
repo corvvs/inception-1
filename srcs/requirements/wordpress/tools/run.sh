@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 19:15:20 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/25 16:14:36 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/25 17:13:43 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,16 @@ while ! mariadb -h$MYSQL_HOST -u$WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --sile
 	sleep 1;
 done
 
+# check for adminer
+if [ ! -f "/var/www/html/adminer.php" ]; then
+	# adminer
+	echo "[INFO] installing adminer..."
+	wget -O "/var/www/html/adminer.php" "https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-mysql.php"
+fi
+
 # check if website already created
 if [ ! -f "/var/www/html/index.html" ]; then
-	# static website
-	mv /tmp/static-web/* /var/www/html/
-
 	echo "[INFO] installing wordpress..."
-
-	# adminer
 
 	# wp-cli
 	wp core download --allow-root
@@ -52,11 +54,12 @@ if [ ! -f "/var/www/html/index.html" ]; then
     wp plugin update --all --allow-root
 
 	echo "[INFO] wordpress installation finished"
-	touch /var/www/html/finish
-else
-	# always copy static web in case it changed
-	mv /tmp/static-web/* /var/www/html/
+	touch /var/www/html/$WP_FILE_ONINSTALL
 fi
+
+# static website
+echo "[INFO] copying static site..."
+mv /tmp/static-web/* /var/www/html/
 
 # enable redis
 wp redis enable --allow-root

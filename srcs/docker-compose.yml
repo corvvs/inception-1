@@ -39,6 +39,7 @@ services:
             WP_USER: ${WP_USER}
             WP_PASSWORD: ${WP_PASSWORD}
             WP_EMAIL: ${WP_EMAIL}
+            WP_FILE_ONINSTALL: ${WP_FILE_ONINSTALL}
             REDIS_HOST: ${REDIS_HOST}
             REDIS_PASSWORD: ${REDIS_PASSWORD}
     db:
@@ -69,6 +70,7 @@ services:
             - private
         restart: always
         environment:
+            WP_FILE_ONINSTALL: ${WP_FILE_ONINSTALL}
             FTP_USER: ${FTP_USER}
             FTP_PASSWORD: ${FTP_PASSWORD}
     redis:
