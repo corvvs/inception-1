@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 19:15:20 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/25 15:59:38 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/25 16:14:36 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,9 @@ if [ ! -f "/var/www/html/index.html" ]; then
 
 	echo "[INFO] wordpress installation finished"
 	touch /var/www/html/finish
+else
+	# always copy static web in case it changed
+	mv /tmp/static-web/* /var/www/html/
 fi
 
 # enable redis
