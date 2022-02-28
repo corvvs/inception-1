@@ -43,7 +43,7 @@ us to setup 5 more containers:
 
 - redis cache, for wordpress.
 - FTP server pointing to the volume of the wordpress site.
-- A static website (Some simple .html, .css and .js files is the web root, so wordpress is now in `website/wordpress`).
+- A static website (Some simple .html, .css and .js files is the web root, so wordpress is now in `https://domain.com/wordpress`).
 - Adminer (a simple tool to manage mysql).
 - A service of my choice, I choose to add a DNS service (`bind`), because we need to setup the ip resolve manually in `/etc/hosts` to access the web via the domain, so a DNS was fine for that purpouse.
 - I also add PhpMyAdmin because... why not? Simple to install and way better than adminer.
