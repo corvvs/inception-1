@@ -112,13 +112,13 @@ volumes:
         driver_opts:
             type: none
             o: bind
-            device: ${HOME}/inception_data/db_data
+            device: ${HOME}/data/inception_data/db_data
     web_data:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: ${HOME}/inception_data/web_data
+            device: ${HOME}/data/inception_data/web_data
 networks:
     public:
     private:
