@@ -98,13 +98,13 @@ services:
         restart: on-failure
         environment:
             MYSQL_HOST: ${MYSQL_HOST}
-    bind:
-        build: requirements/bonus/bind
-        container_name: bind
-        ports:
-            - "53:53"
-            - "53:53/udp"
-        restart: always
+#    bind:
+#        build: requirements/bonus/bind
+#        container_name: bind
+#        ports:
+#            - "53:53"
+#            - "53:53/udp"
+#        restart: always
 
 volumes:
     db_data:
