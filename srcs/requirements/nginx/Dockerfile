@@ -8,7 +8,7 @@ RUN mkdir /etc/nginx/ssl
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -sha256 \
 	-keyout /etc/nginx/ssl/openssl.key \
 	-out /etc/nginx/ssl/openssl.crt \
-	-subj "/C=SP/ST=Madrid/L=Madrid/O=42/OU=IT/CN=dpoveda-.42.fr/"
+	-subj "/C=SP/ST=Madrid/L=Madrid/O=42/OU=IT/CN=dpoveda.42.fr/"
 
 # nginx
 RUN mkdir -p /run/nginx

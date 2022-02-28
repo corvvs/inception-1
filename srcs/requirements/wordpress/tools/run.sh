@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 19:15:20 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/25 22:04:31 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/28 18:25:33 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ if [ ! -f "/var/www/html/$WP_FILE_ONINSTALL" ]; then
     sed -i "44i define('WP_REDIS_READ_TIMEOUT', 1);" wp-config.php
     sed -i "45i define('WP_REDIS_DATABASE', 0);\n" wp-config.php
 	sed -i "46i define('WP_CACHE', true);" wp-config.php
-	#sed -i "47i define('WP_CACHE_KEY_SALT', 'dpoveda-.42.fr');" wp-config.php
+	#sed -i "47i define('WP_CACHE_KEY_SALT', 'dpoveda.42.fr');" wp-config.php
 	# install redir plugin to wordpress
     wp plugin install redis-cache --activate --allow-root
 
