@@ -1,0 +1,11 @@
+$TTL 604800
+@ IN SOA dpoveda.42.fr. root.dpoveda.42.fr. (
+  2    ; Serial
+  600  ; Refresh
+  300  ; Retry
+  60480; Expire
+  600 ); Negative Cache TTL
+
+@    IN NS   dpoveda.42.fr.
+@    IN A    127.0.0.1
+bind IN A    127.0.0.1
