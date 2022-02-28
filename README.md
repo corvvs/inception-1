@@ -36,7 +36,7 @@ Here is an example diagram of the expected result:
 ![diagram](https://github.com/izenynn/inception/blob/main/diagram.png)
 *NOTE: I also open the port 80, to recive HTTP connections, but I redirect those to the HTTPS protocol, that's how it should be, and how it is in most websites. Just delete the line of the docker-compose.yml if you don't want the port 80 open.*
 
-I wanted to learn more about Docker so for this project I also do the bonus part, that part requires
+I wanted to learn more about Docker so I also do the bonus part of the project, that part requires
 us to setup 5 more containers:
 
 - redis cache, for wordpress.
