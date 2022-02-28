@@ -16,7 +16,7 @@ services:
         restart: always
     wordpress:
         depends_on:
-            - db
+            - mariadb
         build: requirements/wordpress
         container_name: wordpress
         volumes:
@@ -40,9 +40,9 @@ services:
             WP_FILE_ONINSTALL: ${WP_FILE_ONINSTALL}
             REDIS_HOST: ${REDIS_HOST}
             REDIS_PASSWORD: ${REDIS_PASSWORD}
-    db:
+    mariadb:
         build: requirements/mariadb
-        container_name: db
+        container_name: mariadb
         volumes:
             - db_data:/var/lib/mysql
         networks:
@@ -112,7 +112,6 @@ volumes:
             type: none
             o: bind
             device: ${HOME}/inception_data/web_data
-
 networks:
     public:
     private:

@@ -6,13 +6,14 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 01:02:44 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/25 22:41:52 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/28 14:49:41 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
 
-if [ ! -f /etc/vsftpd/vsftpd.old ]; then
+if [ ! -f /etc/vsftpd/vsftpd.conf.old ]; then
+	echo "[INFO] configuring ftp..."
 	mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.old
 	mv /tmp/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
@@ -30,10 +31,10 @@ if [ ! -f /etc/vsftpd/vsftpd.old ]; then
 
 	mkdir -p /var/www/html
 	chown -R $FTP_USER:$FTP_USER /var/www/html
-
-	echo "[INFO] started FTP server"
 fi
 
 chown -R $FTP_USER:$FTP_USER /var/www/html
+
+echo "[INFO] starting... FTP server"
 
 vsftpd /etc/vsftpd/vsftpd.conf

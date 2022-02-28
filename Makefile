@@ -6,7 +6,7 @@
 #    By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 18:47:50 by dpoveda-          #+#    #+#              #
-#    Updated: 2022/02/25 22:22:45 by dpoveda-         ###   ########.fr        #
+#    Updated: 2022/02/28 14:31:35 by dpoveda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ HOME=/home/rabi/data
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
-	ENV_FILE = ./srcs/.env
+	ENV_FILE = ./srcs/.env.macos
 else
-	ENV_FILE = ./srcs/.env.linux
+	ENV_FILE = ./srcs/.env
 endif
 
 VOLUMES_PATH = $(HOME)/inception_data
