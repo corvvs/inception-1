@@ -5,7 +5,7 @@
 42 cursus: docker project.
 
 - Status: finished
-- Result: pending evaluation
+- Result: 125%
 - Observations: (null)
 
 ## How to run
