@@ -34,6 +34,7 @@ Each docker container must have his own `Dockerfile` and, of course, have to res
 Here is an example diagram of the expected result:
 
 ![diagram](https://github.com/izenynn/inception/blob/main/diagram.png)
+*NOTE: I also open the port 80, to recive HTTP connections, but I redirect those to the HTTPS protocol, that's how it should be, and how it is in most websites. Just delete the line of the docker-compose.yml if you don't want the port 80 open.*
 
 I wanted to learn more about Docker so for this project I also do the bonus part, that part requires
 us to setup 5 more containers:
@@ -42,7 +43,8 @@ us to setup 5 more containers:
 - FTP server pointing to the volume of the wordpress site.
 - A static website (Some simple .html, .css and .js files is the web root, so wordpress is now in `website/wordpress`).
 - Adminer (a simple tool to manage mysql).
-- A service of my choice, I choose PhpMyAdmin because adminer is very simple.
+- A service of my choice, I choose to add a DNS service (`bind`), because we need to setup the ip resolve manually in `/etc/hosts` to access the web via the domain, so a DNS was fine for that purpouse.
+- I also add PhpMyAdmin because... why not? Simple to install and way better than adminer.
 
 In addition to the diagram above, I also open the ports 21, 21100-21110 for the FTP server.
 
