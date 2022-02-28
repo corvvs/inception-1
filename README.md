@@ -14,6 +14,8 @@
 - run `make stop` to stop the containers.
 - run `make prune` to stop the containers and/or delete the volumes.
 
+NOTE: to change the docker-compose volumes location, you will need to change it in the `Makefile` and on the `srcs/docker-compose.yml` file.
+
 P.S.: you can change variables such as the Domain, users and passwords on the `srcs/.env` file.
 
 ## About this project
