@@ -45,12 +45,14 @@ us to setup 5 more containers:
 - FTP server pointing to the volume of the wordpress site.
 - A static website (Some simple .html, .css and .js files is the web root, so wordpress is now in `https://domain.com/wordpress`).
 - Adminer (a simple tool to manage mysql).
-- A service of my choice, I choose to add a DNS service (`bind`), because we need to setup the ip resolve manually in `/etc/hosts` to access the web via the domain, so a DNS was fine for that purpouse.
+- A service of my choice, I choose `bind` (a DNS service), because we need to setup the ip resolve manually in `/etc/hosts` to access the web via the domain, so a DNS was fine for that purpouse.
 - I also add PhpMyAdmin because... why not? Simple to install and way better than adminer.
 
 In addition to the diagram above, I also open the ports 21, 21100-21110 for the FTP server.
 
 Conclusion: now I like Docker and I enjoyed this a lot.
+
+*NOTE: the bind container (DNS container) is commented on the docker-compose.yml file because it's not really important, uncomment it if you want it.*
 
 ##
 [![forthebadge](https://forthebadge.com/images/badges/built-with-science.svg)](https://forthebadge.com)
